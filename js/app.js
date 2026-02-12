@@ -47,9 +47,37 @@ const ocultarParrafo = () => {
     }
 }
 
+const eliminarParrafo = () => {
+    console.log("desde la funcion eliminar parrafo");
+    const parrafo = document.getElementsByTagName("p");
+    console.log(parrafo[4]);
+    parrafo[4].remove();
+    btnAmarillo.classList.add("disabled")
+}
+
+const obtenerNombre = (e) => {
+    //evitar el comportamiento por defecto que tienen los form de refrescar la pagina
+    e.preventDefault()
+    console.log(e);
+    console.log("desde la funcion obtener nombre");
+    //const input = document.querySelector(".form-control")
+    const input = document.getElementById("nombre")
+    console.log(input.value);
+    const parrafo = document.getElementById("idNombre");
+    //parrafo.textContent = parrafo.textContent + input.value
+    parrafo.textContent += input.value;
+    formulario.reset();
+}
+
+
 //Buscar el boton 
 const btnRojo = document.querySelector(".btn-danger");
+const btnAmarillo = document.querySelector(".btn-warning");
+const formulario = document.querySelector("#formNombre")
 //console.log(btnRojo);
 //adicionamos el manejador de eventos 
 btnRojo.addEventListener("click", ocultarParrafo);
+btnAmarillo.addEventListener("click", eliminarParrafo);
+formulario.addEventListener("submit", obtenerNombre)
+
 
